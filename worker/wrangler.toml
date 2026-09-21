@@ -1,0 +1,42 @@
+name = "melb-avian-visitors"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# The forked AvianVisitors frontend. Static files are served directly; anything
+# that does not match a file falls through to the Worker, which is how
+# /avian/api/*.php gets handled without any PHP existing.
+[assets]
+directory = "../web"
+binding = "ASSETS"
+# Without this, Cloudflare serves a matching static file BEFORE the Worker
+# runs, so index.html would bypass the password check entirely while the API
+# stayed protected — a site that looks locked and is not. Running the Worker
+# first lets it gate every request, then hand assets out itself.
+run_worker_first = true
+# NOT "single-page-application": that serves index.html for any unmatched
+# path, which makes every asset lookup succeed. The cutout route asks ASSETS
+# for a PNG that may not exist and checks the result — with SPA fallback it
+# got a 200 full of HTML and served it as an image.
+not_found_handling = "none"
+
+# Stage one runs on a neighbourhood cluster of public BirdWeather stations
+# within ~5 km of the area you care about; stage two sets OWN_STATION_ID to
+# your own mic and everything else follows. The ids below are a working
+# example cluster in inner Melbourne - replace them with stations near you
+# (https://app.birdweather.com/stations; the id is the number in the URL).
+[vars]
+STATION_IDS = "30108,16110,10847,19263,26279,30491"
+OWN_STATION_ID = ""
+TIMEZONE = "Australia/Melbourne"
+SCORE_GTE = "6.0"
+SITE_NAME = "Melbourne"
+
+# Cached upstream responses. Without this bound the cache degrades to a
+# pass-through and every request hits BirdWeather fresh — the frontend calls
+# eight endpoints per page load, so that adds up fast and is impolite to an
+# API that publishes no rate limits. The id is an identifier, not a secret.
+# Create yours with `wrangler kv namespace create CACHE`, then uncomment this
+# and paste the id in. See docs/DEPLOY.md §3.
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "paste-the-id-here"

@@ -1,0 +1,21 @@
+{
+  "name": "melb-avian-visitors",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A live collage of the birds heard around a window, from a public BirdWeather station",
+  "license": "CC-BY-NC-SA-4.0",
+  "scripts": {
+    "dev": "npm --prefix worker run dev",
+    "deploy": "npm --prefix worker run deploy",
+    "secret:set": "npm --prefix worker run secret:set",
+    "secret:delete": "npm --prefix worker run secret:delete",
+    "test": "npm --prefix worker run test",
+    "live": "npm --prefix worker run live",
+    "typecheck": "npm --prefix worker run typecheck",
+    "install:worker": "npm --prefix worker install",
+    "art:generate": "node tools/art/py.mjs generate_missing.py",
+    "art:cutout": "node tools/art/py.mjs cutout.py",
+    "art:verify": "node tools/art/py.mjs verify_cutouts.py",
+    "art:masks": "node tools/art/py.mjs build_masks.py --illustrations web/avian/assets/illustrations --frontend web"
+  }
+}

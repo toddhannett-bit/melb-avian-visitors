@@ -1,0 +1,23 @@
+# Python build artefacts — these got committed once by an in-process import
+# of the art tools and have no business in the repository.
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Wrangler
+.wrangler/
+dist/
+
+# Local secrets. The art pipeline reads GEMINI_API_KEY from the environment;
+# if you ever keep it in a file, keep it here.
+.env
+.dev.vars
+
+# Scratch output from a trial art run (--out trial). The real set lives in
+# web/avian/assets/illustrations.
+/trial/

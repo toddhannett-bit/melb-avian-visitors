@@ -1,0 +1,24 @@
+# Python dependencies for the art pipeline (tools/art/).
+#
+# Nothing else in the project needs Python: the worker is TypeScript and the
+# frontend is static. Install these only when generating or cutting artwork.
+#
+#     python -m pip install -r requirements.txt        (Windows)
+#     python3 -m pip install -r requirements.txt       (macOS / Linux)
+#
+# cutout.py and verify_cutouts.py both referenced this file in their error
+# messages for weeks before it existed, which is its own small lesson.
+
+# Image reading and writing. Used by every tool here.
+Pillow>=10.0
+
+# Background removal for cutout.py, plus the runtime it needs. The first run
+# downloads a model to ~/.rembg (about 1GB for birefnet-general; the
+# general-lite variant is smaller and is what to use when memory is tight).
+rembg>=2.0.60
+onnxruntime>=1.17
+
+# Silhouette analysis: verify_cutouts.py uses scipy.ndimage to find detached
+# fragments.
+numpy>=1.26
+scipy>=1.11
