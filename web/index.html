@@ -15,7 +15,7 @@
 function systemTheme(){try{return window.matchMedia&&window.matchMedia(q).matches?'dark':'light';}catch(e){return'light';}}
 function preference(){try{var v=localStorage.getItem('bird:theme:v2');if(v==='auto'||v==='light'||v==='dark')return v;var old=localStorage.getItem('bird:theme');return old==='light'||old==='dark'?old:'auto';}catch(e){return'auto';}}
 var p=preference();d.setAttribute('data-theme',p==='light'||p==='dark'?p:systemTheme());})();</script>
-  <link rel="stylesheet" href="./styles.css?v=r207">
+  <link rel="stylesheet" href="./styles.css?v=r220">
   <link rel="stylesheet" href="./stamps.css?v=r355">
   <link rel="stylesheet" href="./stamp-batch-root.css?v=r254">
   <link rel="stylesheet" href="./stamp-batch-a.css?v=r257">
@@ -273,13 +273,14 @@ var p=preference();d.setAttribute('data-theme',p==='light'||p==='dark'?p:systemT
           </button>
         </div>
         <button id="modalGenerate" class="postcard-generate" type="button" aria-live="polite" aria-atomic="true" hidden>generate image</button>
-        <nav class="postcard-links" aria-label="Hear this bird, and read more">
-          <!-- The best recent clip, so the bird can be heard without opening
-               the recordings list. Wired and stateful in apt.js. -->
-          <button type="button" id="modalPlay" class="postcard-play" data-state="idle" aria-label="play a recording of this bird"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2 L10 6 L3 10 Z"/></svg><span>play</span></button>
-          <a id="modalWiki" target="_blank" rel="noopener">Wikipedia <span aria-hidden="true">↗</span></a>
-          <a id="modalEbird" target="_blank" rel="noopener">eBird <span aria-hidden="true">↗</span></a>
-        </nav>
+        <!-- The best recent clip, so the bird can be heard without opening
+             the recordings list. The play button sits centered under the
+             illustration in the postcard's own chip surface, so it's the
+             first thing you notice without being loud about it. Wired in
+             apt.js; setAtlasCardButtonState branches on #modalPlay so atlas
+             card copy stays as it was. The three reference links live in
+             the About section below — see #modalRefs. -->
+        <button type="button" id="modalPlay" class="postcard-play" data-state="idle" aria-label="Play a recording of this bird"><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 2 L10 6 L3 10 Z"/></svg><span>Hear this bird</span></button>
       </div>
     </section>
 
@@ -308,6 +309,13 @@ var p=preference();d.setAttribute('data-theme',p==='light'||p==='dark'?p:systemT
             <span class="meta-item"><span class="k">Species</span><span class="v" id="modalSpecies">-</span></span>
             <span class="meta-item"><span class="k">Rarity</span><span class="v" id="modalRarity">-</span></span>
           </div>
+          <!-- Reference links live at the foot of About rather than over the
+               illustration, so nothing floats on the artwork. -->
+          <nav class="postcard-refs" id="modalRefs" aria-label="Learn more about this bird">
+            <span class="postcard-refs-label">Learn more</span>
+            <a id="modalWiki" target="_blank" rel="noopener">Wikipedia <span aria-hidden="true">↗</span></a>
+            <a id="modalEbird" target="_blank" rel="noopener">eBird <span aria-hidden="true">↗</span></a>
+          </nav>
         </div>
       </details>
 
@@ -417,6 +425,6 @@ var p=preference();d.setAttribute('data-theme',p==='light'||p==='dark'?p:systemT
 <script src="./stamp-batch-a.js?v=r341"></script>
   <script src="./stamp-batch-b.js?v=r318"></script>
 <script src="./stamp-batch-c.js?v=r235"></script>
-<script src="./apt.js?v=r243"></script>
+<script src="./apt.js?v=r252"></script>
 </body>
 </html>

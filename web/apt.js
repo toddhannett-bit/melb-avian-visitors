@@ -4351,6 +4351,10 @@
   var ICON_CLOSE = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3.2 3.2 L8.8 8.8 M8.8 3.2 L3.2 8.8"/></svg>';
   var ICON_PLAY = '<svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2 L10 6 L3 10 Z"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 12 12" fill="currentColor"><rect x="3" y="2" width="2.5" height="8"/><rect x="6.5" y="2" width="2.5" height="8"/></svg>';
+  // Animated equalizer used by atlas .card-play in the playing state. Three
+  // bars, each scaleY-animated on a shared keyframe with staggered delays.
+  // Purely visual; screen readers still get the "stop" label from the span.
+  var ICON_EQ = '<span class="eq-icon" aria-hidden="true"><i></i><i></i><i></i></span>';
   var ICON_LOOP = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 5.4h7.6l-1.7-1.7M12.8 10.6H5.2l1.7 1.7"/><path d="M12.8 5.4v2M3.2 10.6v-2"/></svg>';
   var ICON_MORE_VERTICAL = '<svg viewBox="0 0 128 512" fill="currentColor" aria-hidden="true"><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-152a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>';
   var ICON_MOVE = '<svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.7 224 32 224C14.3 224 0 238.3 0 256s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>';
@@ -5237,24 +5241,37 @@
   function setAtlasCardButtonState(btn, state) {
     if (!btn) return;
     btn.setAttribute('data-state', state);
+    // The postcard's hero play button reads in a longer voice than the tight
+    // atlas card buttons. Same state machine, two copies of the label set,
+    // keyed off the element's id so nothing else here has to know.
+    var hero = btn.id === 'modalPlay';
+    // Atlas card buttons swap the pause icon for an animated equalizer while
+    // sounding, so the icon reads "this is playing" rather than "this will
+    // stop". Hero button keeps the classic pause icon.
+    var cardBtn = btn.classList && btn.classList.contains('card-play');
+    var idle    = hero ? 'Hear this bird' : 'play';
+    var stop    = hero ? 'Stop'           : 'stop';
+    var loading = hero ? 'Loading…'  : '...';
+    var missing = hero ? 'No audio yet'   : 'no audio';
+    var playingIcon = cardBtn ? ICON_EQ : ICON_PAUSE;
     if (state === 'playing') {
       btn.setAttribute('data-active', 'true');
-      btn.innerHTML = ICON_PAUSE + '<span>stop</span>';
+      btn.innerHTML = playingIcon + '<span>' + stop + '</span>';
     } else if (state === 'loading') {
       btn.setAttribute('data-active', 'true');
-      btn.innerHTML = ICON_PLAY + '<span>...</span>';
+      btn.innerHTML = ICON_PLAY + '<span>' + loading + '</span>';
     } else if (state === 'missing') {
       btn.setAttribute('data-active', 'false');
-      btn.innerHTML = ICON_PLAY + '<span>no audio</span>';
+      btn.innerHTML = ICON_PLAY + '<span>' + missing + '</span>';
       setTimeout(function () {
         if (btn.getAttribute('data-state') === 'missing') {
-          btn.innerHTML = ICON_PLAY + '<span>play</span>';
+          btn.innerHTML = ICON_PLAY + '<span>' + idle + '</span>';
           btn.setAttribute('data-state', 'idle');
         }
       }, 2200);
     } else {
       btn.setAttribute('data-active', 'false');
-      btn.innerHTML = ICON_PLAY + '<span>play</span>';
+      btn.innerHTML = ICON_PLAY + '<span>' + idle + '</span>';
     }
   }
   function clearAtlasCardProgress(card) {
@@ -5531,13 +5548,13 @@
         : null;
       var audioSrc = mediaApiUrl('recording', { sci: s.sci, detection: detectionId }, renderedScopeId);
       // The "all time" window makes the windowed count identical to the
-      // all-time count - collapse to a single stat rather than print the
-      // same number twice. Otherwise label the count with its span.
+      // Atlas card shows the count for the currently-selected time window.
+      // When the window is ALL, that's already the all-time count; otherwise
+      // it's the windowed count only — one stat, cleaner card.
       var allLabel = educatorScopeId() ? educatorScopeLabel(effectiveEducatorScope) : 'all time';
       var statRows = isAllWindow
         ? '<div><span class="n">' + fmtNK(total) + '</span><span class="lbl-inline">' + escHtml(allLabel) + '</span></div>'
-        : '<div><span class="n">' + fmtNK(win) + '</span><span class="lbl-inline">' + windowLabel(atlasHours, DATA.recent) + '</span></div>'
-        + '<div><span class="n">' + fmtNK(total) + '</span><span class="lbl-inline">all time</span></div>';
+        : '<div><span class="n">' + fmtNK(win) + '</span><span class="lbl-inline">' + windowLabel(atlasHours, DATA.recent) + '</span></div>';
       // Heard but never drawn: issue the bird's real family stamp with the
       // egg nest occupying its artwork plate. Waiting on tablesReady keeps
       // a card from flashing the placeholder before dims.json lands.
@@ -5546,8 +5563,6 @@
       if (classic) {
         var common = s.com || s.sci;
         var imageSrc = needsArt ? './nest-eggs.webp' : sketchSrc + fresh;
-        var birdWiki = wikiUrl(s.sci);
-        var birdEbird = ebirdUrl(s.sci);
         return ''
           + '<article class="bird-card classic-atlas-card' + (needsArt ? ' needs-art' : '') + '"'
           + ' data-sci="' + escHtml(s.sci) + '" data-com="' + escHtml(s.com || '') + '" data-audio="' + escHtml(audioSrc) + '"'
@@ -5562,15 +5577,20 @@
           + '<div class="img-wrap">'
           + '<img loading="lazy" decoding="async" src="' + escHtml(imageSrc) + '" alt="' + escHtml(common) + '">'
           + '</div>'
-          + '<h3>' + escHtml(common) + '</h3>'
-          + '<div class="sci">' + escHtml(s.sci) + '</div>'
-          + '<div class="spectro-wrap" aria-hidden="true"></div>'
-          + '<div class="actions">'
-          + '<button type="button" class="chip play" data-action="play" aria-label="play recording">'
-          + ICON_PLAY + '<span>play</span>'
-          + '</button>'
-          + '<a class="chip ext" href="' + escHtml(birdWiki) + '" target="_blank" rel="noopener" aria-label="Wikipedia">wiki</a>'
-          + (birdEbird ? '<a class="chip ext" href="' + escHtml(birdEbird) + '" target="_blank" rel="noopener" aria-label="eBird">ebird</a>' : '')
+          // Name row: bird identity on the left, quick-play button on the right.
+          // The button sits next to the name it plays, so the association is
+          // obvious and it never floats over the illustration. Uses the same
+          // [data-action="play"] contract the atlas audio wiring already reads;
+          // the document-level card-open handler excludes .card-play so tapping
+          // the button plays audio without opening the postcard.
+          + '<div class="card-title">'
+          +   '<div class="card-title-text">'
+          +     '<h3>' + escHtml(common) + '</h3>'
+          +     '<div class="sci">' + escHtml(s.sci) + '</div>'
+          +   '</div>'
+          +   '<button type="button" class="card-play" data-action="play" data-state="idle" aria-label="Play a recording of ' + escHtml(common) + '">'
+          +   ICON_PLAY + '<span>play</span>'
+          +   '</button>'
           + '</div>'
           + '</article>';
       }
@@ -7279,17 +7299,12 @@
     document.body.classList.toggle('av-forwarded', !!adminAuthMeta.required);
     locked.style.display = 'none';
     items.classList.add('show');
-    var audioHost = location.hostname.toLowerCase();
-    var audioOctets = audioHost.split('.').map(Number);
-    var localAudio = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(audioHost)
-      || /\.local$/.test(audioHost)
-      || (audioOctets.length === 4 && audioOctets.every(function (part) {
-        return Number.isInteger(part) && part >= 0 && part <= 255;
-      }) && (audioOctets[0] === 10
-        || audioOctets[0] === 127
-        || (audioOctets[0] === 169 && audioOctets[1] === 254)
-        || (audioOctets[0] === 172 && audioOctets[1] >= 16 && audioOctets[1] <= 31)
-        || (audioOctets[0] === 192 && audioOctets[1] === 168)));
+    // Live microphone stream in the menu drawer is disabled for now — the
+    // upstream feed isn't reliable enough to keep in front of visitors.
+    // The controller code is kept intact so re-enabling is a one-line flip
+    // back to the LAN-only check below. The educator live panel keeps its
+    // own mount path and is unaffected.
+    var localAudio = false;
     // Build the diagnostic shortcuts (system / logs / tools). With
     // native:true they navigate in-page; otherwise they keep the old
     // open-in-new-tab behavior for the legacy BirdNET-Pi screens.
@@ -9371,7 +9386,11 @@
     if (previousDistinctive) previousDistinctive.remove();
     document.getElementById('modalRecordings').innerHTML = '<li class="rec-empty">Loading recordings...</li>';
     document.getElementById('modalRecCount').textContent = '';
-    document.getElementById('modalWiki').href = wikiUrl(sci);
+    // Wikipedia is the reference every species card links to, and the About
+    // text is Wikipedia's too - the "Learn more" link is its attribution.
+    var wikiLink = document.getElementById('modalWiki');
+    wikiLink.href = wikiUrl(sci);
+    wikiLink.hidden = false;
     stopModalPlay();
     var ebirdLink = document.getElementById('modalEbird');
     var ebirdHref = ebirdUrl(sci);
@@ -9461,6 +9480,8 @@
       var desc = document.getElementById('modalDesc');
       renderAboutDescription(desc, j);
       if (j.source && /^https:\/\/en\.wikipedia\.org\/wiki\//.test(j.source.url || '')) {
+        // Point "Learn more" at the exact article the description came from,
+        // which is not always the one wikiUrl() guesses from the binomial.
         document.getElementById('modalWiki').href = j.source.url;
       }
     }).catch(function () {
@@ -14251,9 +14272,13 @@
     postcardShellSequence += 1;
     clearTimeout(postcardCloseTimer);
     postcardCloseTimer = 0;
-    var angles = [-.36, .28, -.22, .44, .18, -.31];
-    var angle = angles[postcardOpenSequence++ % angles.length];
-    postcardModal.style.setProperty('--sheet-turn', angle + 'deg');
+    // Postcard used to open at a subtle 'casually placed' tilt (0.2–0.4°).
+    // In practice it read as 'the modal is skewed' rather than 'authored
+    // detail', so it now opens flat. Kept the sequence + property write so
+    // downstream code (the flight animation in showPostcardFromAtlasCard)
+    // still reads a numeric --sheet-turn.
+    postcardOpenSequence++;
+    postcardModal.style.setProperty('--sheet-turn', '0deg');
     postcardModal.classList.remove('is-open');
     postcardModal.classList.add('is-positioned');
     postcardModal.classList.add('is-blurring');
@@ -14639,7 +14664,7 @@
     if (ev.target.closest('#postcard-modal')) return;
     var card = ev.target.closest('.bird-card');
     if (card) {
-      if (ev.target.closest('.actions, .spectro-wrap')) return;
+      if (ev.target.closest('.card-play, .spectro-wrap')) return;
       if (card.classList.contains('stamp-card')) return openPostcard(card);
       if (card.classList.contains('classic-atlas-card')) {
         return openClassicPostcard(card, { animate: ev.detail !== 0 });

@@ -243,13 +243,13 @@
     .top { top: 12px; padding: 0 12px; }
     .top .window-pick { padding: 3px; }
     .top .window-pick button {
-      font-size: 8.5px; padding: 6px 10px; letter-spacing: 0.12em;
+      font-size: 10.5px; padding: 6px 10px; letter-spacing: 0.08em;
     }
-    .menu-btn { font-size: 9px; padding: 0 11px; letter-spacing: 0.14em; }
-    .return-to-atlas { top: 10px; left: 10px; padding: 0 10px; font-size: 8.5px; }
+    .menu-btn { font-size: 10.5px; padding: 0 12px; letter-spacing: 0.1em; }
+    .return-to-atlas { top: 10px; left: 10px; padding: 0 10px; font-size: 10px; }
   }
   @media (max-width: 420px) {
-    .top .window-pick button { font-size: 8px; padding: 5px 7px; letter-spacing: 0.08em; }
+    .top .window-pick button { font-size: 10px; padding: 5px 8px; letter-spacing: 0.06em; }
   }
 
   /* ============ Bottom slider - recessed track, raised active pill ============ */
@@ -1392,15 +1392,15 @@
   .stats-calendar-week { margin-bottom: 3px; }
   .stats-calendar-week span {
     text-align: center;
-    font: 7.5px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font: 9.5px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
     color: var(--ink-soft); letter-spacing: .08em;
   }
-  .stats-calendar-days span { height: 28px; }
+  .stats-calendar-days span { height: 30px; }
   .stats-calendar-days button {
-    position: relative; min-width: 28px; width: 28px; height: 28px; padding: 0;
+    position: relative; min-width: 30px; width: 30px; height: 30px; padding: 0;
     border: 0; border-radius: 50%; background: transparent;
     color: var(--ink); cursor: pointer;
-    font: 500 9.5px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font: 500 11px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
     font-variant-numeric: tabular-nums;
     transition: color 120ms ease, background 120ms ease, transform 120ms cubic-bezier(.23,1,.32,1);
   }
@@ -1420,9 +1420,9 @@
     box-shadow: inset 0 1px 0 var(--hairline);
   }
   .stats-calendar-foot button {
-    min-width: 0; height: 22px; padding: 0 2px;
-    font: 8px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-    color: var(--ink-soft); letter-spacing: .08em;
+    min-width: 0; height: 24px; padding: 0 3px;
+    font: 10px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--ink-soft); letter-spacing: .06em;
   }
   @media (hover: hover) and (pointer: fine) {
     .stats-date-nav button:hover:not(:disabled) { color: var(--ink); }
@@ -1463,8 +1463,8 @@
     .stats-calendar { width: min(252px, calc(100vw - 40px)); }
     .stats-timeline { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
     .stats-tl-label { font-size: 11px; }
-    .stats-tl-label .sci { font-size: 9px; }
-    .stats-tl-xtick { font-size: 8px; }
+    .stats-tl-label .sci { font-size: 10px; }
+    .stats-tl-xtick { font-size: 10px; }
   }
   /* Desktop two-column: size the grid to the side panel's content height
      (the timeline stretches to match it). Top-anchored, not vertically
@@ -1491,7 +1491,7 @@
   }
   .stats-tl-ytick {
     position: absolute; right: 5px;
-    font: 8px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
+    font: 10px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
     transform: translateY(50%);
   }
   .stats-tl-ytick::after {
@@ -1569,16 +1569,16 @@
   }
   .stats-tl-label .sci {
     display: block;
-    font-style: italic; color: var(--ink-soft); font-size: 8.5px;
+    font-style: italic; color: var(--ink-soft); font-size: 10px;
     transition: color 130ms ease;
   }
   /* Ticks live inside .stats-tl-plot so their left:% aligns with the
      gridlines (both share the plot's content box). bottom is negative
      to push the label into the x-axis gutter below the plot. */
   .stats-tl-xtick {
-    position: absolute; bottom: -19px;
+    position: absolute; bottom: -22px;
     transform: translateX(-50%);
-    font: 7px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
+    font: 10px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
     white-space: nowrap;
   }
   .stats-data-empty {
@@ -1604,7 +1604,7 @@
   .stats-tl-cap {
     position: absolute; top: 0; right: 0; z-index: 2;
     background: var(--paper); padding: 1px 0 3px 8px;
-    font: 8.5px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
+    font: 10px/1 "SF Mono", Menlo, monospace; color: var(--ink-soft);
     letter-spacing: 0.04em;
   }
 
@@ -1621,8 +1621,8 @@
     padding: 46px 0 6px;
   }
   .stats-side h3, .stats-rhythm h3 {
-    font: 700 10px ui-monospace, Menlo, monospace; color: var(--ink);
-    letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 1px;
+    font: 700 11.5px ui-monospace, Menlo, monospace; color: var(--ink);
+    letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 2px;
     border-left: 2px solid var(--accent); padding-left: 10px;
   }
   /* Tight, content-sized groups - they sit just below their headers
@@ -1630,15 +1630,15 @@
   .stats-side .grp { flex: 0 0 auto; }
   .stats-side .grp + .grp { margin-top: 22px; }
   .stats-side .grp small, .stats-rhythm small {
-    display: block; font: 9px ui-monospace, Menlo, monospace; color: var(--ink-soft);
-    letter-spacing: 0.06em; margin: 0 0 3px 12px;
+    display: block; font: 10.5px ui-monospace, Menlo, monospace; color: var(--ink-soft);
+    letter-spacing: 0.05em; margin: 0 0 4px 12px;
   }
   .stats-side ol { list-style: none; padding: 0; margin: 0; }
   .stats-side li {
     display: grid; grid-template-columns: 44px 1fr auto; gap: 10px;
-    padding: 2px 0;
+    padding: 3px 0;
     box-shadow: inset 0 -1px 0 rgba(26,22,18,0.05);
-    font: 12.5px/1.25 ui-serif, Georgia, serif; color: var(--ink);
+    font: 13.5px/1.3 ui-serif, Georgia, serif; color: var(--ink);
     align-items: baseline;
     transition: background 140ms ease, color 140ms ease;
   }
@@ -1654,8 +1654,8 @@
   /* Cross-highlight from a hovered timeline square. */
   .stats-side li.sync-hi { background: var(--paper-2); }
   .stats-side li.sync-hi span:not(.yr):not(.ct) { color: var(--accent); }
-  .stats-side li .yr { font: 9.5px ui-monospace, Menlo, monospace; color: var(--accent-2); letter-spacing: 0.04em; }
-  .stats-side li .ct { font: 11px ui-monospace, Menlo, monospace; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .stats-side li .yr { font: 10.5px ui-monospace, Menlo, monospace; color: var(--accent-2); letter-spacing: 0.04em; }
+  .stats-side li .ct { font: 12px ui-monospace, Menlo, monospace; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 
   /* (Histogram strip removed - charts moved into the stats-grid LEFT
      column as full-bleed chart cards. See .stats-charts above.) */
@@ -1872,14 +1872,99 @@ body.postcard-open { overflow: hidden; }
   bottom: calc(100% + 6px);
 }
 
-.postcard-links {
+/* Hero play button. Pinned to the bottom-right of the illustration, so the
+   bottom edge reads pose-toggle · empty middle · play. Chip-surface
+   background matches the postcard's own paper wash so the button feels part
+   of the card rather than an ink pill floating over it; a subtle ring and a
+   soft drop keep it findable. Focus ring is inset because the parent frame
+   has overflow: hidden. */
+.postcard-play {
   position: absolute; z-index: 3;
   right: 14px; bottom: 14px;
-  display: flex; gap: 6px; padding: 0;
-  background: transparent;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 32px; padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--card-ink);
+  background: var(--card-action-surface);
+  box-shadow: inset 0 0 0 1px var(--card-rule), 0 3px 10px rgba(38, 30, 20, .08);
+  font: 600 11px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
 }
-.postcard-links a,
-.postcard-links .postcard-play,
+.postcard-play svg { width: 10px; height: 10px; flex: none; transform: translateX(1px); }
+.postcard-play span { display: inline-block; }
+.postcard-play:active { transform: scale(.97); }
+.postcard-play:focus-visible {
+  outline: 1px solid var(--card-ink);
+  outline-offset: -3px;
+}
+.postcard-play[data-state="playing"] {
+  color: var(--card-stock);
+  background: var(--card-ink);
+}
+.postcard-play[data-state="playing"] svg { transform: none; }
+.postcard-play[data-state="loading"] { opacity: .78; cursor: progress; }
+.postcard-play[data-state="loading"] svg { transform: none; }
+.postcard-play[data-state="missing"] { opacity: .62; cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) {
+  .postcard-play:hover {
+    background: var(--card-action-active);
+    box-shadow: inset 0 0 0 1px var(--card-rule), 0 5px 14px rgba(38, 30, 20, .12);
+  }
+  .postcard-play[data-state="playing"]:hover {
+    background: color-mix(in srgb, var(--card-ink) 88%, var(--card-stock) 12%);
+  }
+  .postcard-play[data-state="loading"]:hover,
+  .postcard-play[data-state="missing"]:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .postcard-play, .postcard-play:hover, .postcard-play:active { transform: none !important; transition-duration: 1ms !important; }
+}
+
+/* Learn-more cluster. Lives at the foot of the postcard's About section:
+   a label + three outlined chips inline with the About body, so nothing
+   floats over the illustration and the reference links sit next to the
+   description credit they logically belong with. */
+.postcard-refs {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.postcard-refs-label {
+  font: 500 11px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--card-muted);
+}
+.postcard-refs a {
+  display: inline-flex; align-items: center; gap: 5px;
+  min-height: 28px; padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--card-muted);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--card-rule);
+  font: 500 12px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: .03em;
+  text-decoration: none;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+.postcard-refs a:active { transform: scale(.94); }
+.postcard-refs a:focus-visible {
+  outline: 1px solid var(--card-ink);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .postcard-refs a:hover {
+    color: var(--card-ink);
+    background: var(--card-action-active);
+  }
+}
+
+/* .postcard-generate keeps its old chip look — used only in admin flows, so
+   it inherits the small-pill vocabulary the read-more chips also live in. */
 .postcard-generate {
   display: inline-flex; align-items: center; gap: 5px;
   min-height: 28px; padding: 0 9px;
@@ -1887,31 +1972,18 @@ body.postcard-open { overflow: hidden; }
   border-radius: 999px;
   color: var(--card-muted);
   background: var(--card-action-surface);
-  box-shadow: inset 0 0 0 1px var(--card-rule), 0 4px 12px rgba(38,30,20,.07);
+  box-shadow: inset 0 0 0 1px var(--card-rule), 0 4px 12px rgba(38, 30, 20, .07);
   font: 600 9px/1 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   letter-spacing: .04em;
   text-decoration: none;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
-.postcard-links .postcard-play { cursor: pointer; }
-.postcard-links .postcard-play svg { width: 8px; height: 8px; flex: none; }
-/* Playing: the one filled chip, so it is obvious which button stops it. */
-.postcard-links .postcard-play[data-state="playing"] {
-  color: var(--card-ink);
-  background: var(--card-action-active);
-}
-.postcard-links a:active,
-.postcard-links .postcard-play:active,
 .postcard-generate:active:not(:disabled) { transform: scale(.93); }
-.postcard-links a:focus-visible,
-.postcard-links .postcard-play:focus-visible,
 .postcard-generate:focus-visible {
   outline: 1px solid var(--card-ink);
   outline-offset: 2px;
 }
 @media (hover: hover) and (pointer: fine) {
-  .postcard-links a:hover,
-  .postcard-links .postcard-play:hover,
   .postcard-generate:hover:not(:disabled) {
     color: var(--card-ink);
     background: var(--card-action-active);
@@ -1968,12 +2040,12 @@ body.postcard-open { overflow: hidden; }
 }
 .postcard-stats {
   width: max-content; max-width: 100%;
-  display: flex; align-items: baseline; gap: 7px;
+  display: flex; align-items: baseline; gap: 8px;
   margin-top: auto;
   padding: 8px 0 0;
   overflow: hidden;
   color: var(--card-muted);
-  font: 500 9.5px/1.2 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font: 500 11px/1.2 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   letter-spacing: .01em;
   white-space: nowrap;
 }
@@ -2083,8 +2155,8 @@ body.postcard-open { overflow: hidden; }
   justify-self: end;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   color: var(--card-muted);
-  font: 500 8px/1 ui-monospace, Menlo, monospace;
-  letter-spacing: .08em; text-transform: uppercase;
+  font: 500 10px/1 ui-monospace, Menlo, monospace;
+  letter-spacing: .06em; text-transform: uppercase;
 }
 .postcard-section summary > i { display: none; }
 .postcard-section[open] summary { box-shadow: none; }
@@ -2111,9 +2183,9 @@ body.postcard-open { overflow: hidden; }
 .postcard-about .desc {
   flex: 0 0 auto;
   margin: 0;
-  max-width: 70ch;
-  color: color-mix(in srgb, var(--card-ink) 82%, transparent);
-  font: 12.5px/1.46 ui-serif, Georgia, serif;
+  max-width: 68ch;
+  color: color-mix(in srgb, var(--card-ink) 88%, transparent);
+  font: 14.5px/1.55 ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
 }
 .postcard-about .desc p { margin: 0; }
 .postcard-about .desc p + p { margin-top: 10px; }
@@ -2138,7 +2210,7 @@ body.postcard-open { overflow: hidden; }
 }
 .postcard-about .meta-item .k,
 .postcard-about .meta-item .v {
-  font: 500 8.25px/1.3 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   letter-spacing: .01em;
   text-transform: none;
 }
@@ -2187,8 +2259,8 @@ body.postcard-open { overflow: hidden; }
   min-height: 24px;
   padding: 0;
   color: var(--card-muted);
-  font: 600 7.5px/1 ui-monospace, Menlo, monospace;
-  letter-spacing: .09em;
+  font: 600 10px/1 ui-monospace, Menlo, monospace;
+  letter-spacing: .06em;
   text-transform: uppercase;
   text-align: left;
 }
@@ -2526,25 +2598,30 @@ body.postcard-open { overflow: hidden; }
   .postcard-content { padding: 0; }
   .postcard-identity { min-height: 142px; flex-basis:142px; grid-template-columns: minmax(0, 1fr) 112px; gap: 9px; }
   .postcard-heading h2 { font-size: clamp(24px, 7vw, 32px); }
-  .postcard-stats { margin-top: auto; padding-top: 8px; gap: 5px; font-size: 8px; }
+  .postcard-stats { margin-top: auto; padding-top: 8px; gap: 5px; font-size: 10px; }
   .postcard-stamp-slot { min-height: 0; }
   .postcard-section summary { min-height: 46px; padding: 0 13px; gap: 8px; }
   .postcard-section summary > span { font-size: 18px; }
-  .postcard-section summary > small { font-size: 7px; }
-  .postcard-about .modal-meta { gap: 5px; }
+  .postcard-section summary > small { font-size: 10px; }
+  .postcard-about .modal-meta { gap: 6px; }
   .postcard-about .meta-item { gap: 4px; }
   .postcard-about .meta-item .k,
-  .postcard-about .meta-item .v { font-size: 7px; }
+  .postcard-about .meta-item .v { font-size: 10px; }
   .postcard-recordings .postcard-section-body { padding-inline: 13px; }
   .postcard-recordings .rec-table-head,
   .postcard-recordings .rec-row-toggle { grid-template-columns: minmax(66px, .9fr) minmax(54px, .6fr) minmax(84px, 1fr); gap: 7px; }
-  .postcard-recordings .rec-table-head { font-size: 6.8px; letter-spacing: .065em; }
+  .postcard-recordings .rec-table-head { font-size: 9.5px; letter-spacing: .05em; }
   .postcard-recordings .when b,
   .postcard-recordings .conf b,
-  .postcard-recordings .date-time b { font-size: 10.5px; }
-  .postcard-links a,
-  .postcard-links .postcard-play,
+  .postcard-recordings .date-time b { font-size: 11.5px; }
+  .postcard-refs a { padding-inline: 10px; font-size: 11px; min-height: 26px; }
+  .postcard-refs-label { font-size: 10px; }
   .postcard-generate { padding-inline: 8px; font-size: 8px; }
+  .postcard-play {
+    min-height: 30px; padding: 0 14px;
+    font-size: 10.5px; gap: 7px;
+  }
+  .postcard-play svg { width: 9px; height: 9px; }
 }
 @media (max-width: 860px) and (max-height: 520px) {
   .postcard-sheet {
@@ -2562,6 +2639,17 @@ body.postcard-open { overflow: hidden; }
     max-height: 36px;
     padding: 0;
   }
+  /* Landscape phone: the bird frame collapses to a horizontal band. The hero
+     shrinks to fit and pins to the bottom-right so it doesn't fight the
+     pose toggle for the center. The refs cluster is in the About section
+     now (not this band) so no display change needed here. */
+  .postcard-play {
+    left: auto; right: 10px; bottom: 8px;
+    margin: 0;
+    min-height: 28px; padding: 0 12px;
+    font-size: 10px; gap: 6px;
+  }
+  .postcard-play svg { width: 9px; height: 9px; }
   .postcard-content { gap: 6px; }
   .postcard-identity {
     min-height: 78px;
@@ -2574,10 +2662,10 @@ body.postcard-open { overflow: hidden; }
 @media (max-width: 350px) {
   .postcard-heading h2 { font-size: 20px; }
   .postcard-about .postcard-section-body { padding-inline: 9px; }
-  .postcard-about .modal-meta { gap: 2px; }
-  .postcard-about .meta-item { gap: 2px; }
+  .postcard-about .modal-meta { gap: 3px; }
+  .postcard-about .meta-item { gap: 3px; }
   .postcard-about .meta-item .k,
-  .postcard-about .meta-item .v { font-size: 6px; }
+  .postcard-about .meta-item .v { font-size: 9.5px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .postcard-backdrop, .postcard-sheet, .postcard-section summary > i::after,
@@ -2626,32 +2714,61 @@ body.postcard-open { overflow: hidden; }
        later in the file. */
     .atlas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .atlas-grid .bird-card { min-height: 0; padding: 12px 12px 14px; border-radius: 9px; }
-    .atlas-grid .bird-card .stat { top: 10px; left: 11px; font-size: 8px; }
-    .atlas-grid .bird-card .stat .n { font-size: 11px; }
+    .atlas-grid .bird-card .stat { top: 10px; left: 11px; font-size: 10px; }
+    .atlas-grid .bird-card .stat .n { font-size: 12px; }
     .atlas-grid .bird-card .img-wrap { margin: 30px 0 8px; }
     .atlas-grid .bird-card .img-wrap img { max-height: 96px; }
-    .atlas-grid .bird-card h3 { font-size: 12.5px; }
-    .atlas-grid .bird-card .sci { font-size: 9.5px; }
-    .atlas-grid .bird-card .actions { display: none; }
-    .atlas-grid .lifer-badge { top: 9px; right: 9px; font-size: 7px; padding: 3px 5px; letter-spacing: 0.1em; }
+    .atlas-grid .bird-card h3 { font-size: 13.5px; }
+    .atlas-grid .bird-card .sci { font-size: 11px; }
+    .atlas-grid .lifer-badge { top: 9px; right: 9px; font-size: 9px; padding: 3px 6px; letter-spacing: 0.08em; }
+    .atlas-grid .bird-card .card-title { gap: 8px; margin-top: 4px; }
+    .atlas-grid .bird-card .card-play { width: 30px; height: 30px; }
+    .atlas-grid .bird-card .card-play svg { width: 11px; height: 11px; }
+    .atlas-grid .bird-card .card-play .eq-icon { width: 11px; height: 11px; }
   }
   .bird-card {
     position: relative;
     background: var(--paper);
     border-radius: 10px;
-    padding: 16px 16px 12px;
+    padding: 16px 16px 18px;
     box-shadow: var(--edge-lg);
     display: flex; flex-direction: column;
-    min-height: 320px;
+    min-height: 280px;
     cursor: pointer;
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    transition:
+      transform 260ms cubic-bezier(.2,.7,.3,1),
+      box-shadow 260ms ease,
+      background-color 220ms ease;
   }
-  .bird-card:hover { transform: translateY(-1px); box-shadow: var(--edge-xl, 0 6px 16px rgba(26,22,18,0.12)); }
+  /* Hover reads as "the bird notices you": the whole card lifts, the paper
+     warms a touch, and the illustration floats off the paper via its own
+     transform + deeper drop-shadow. The h3 shifts to accent so the name is
+     the last thing to catch the eye. */
+  @media (hover: hover) and (pointer: fine) {
+    .bird-card:hover {
+      transform: translateY(-4px);
+      background-color: color-mix(in srgb, var(--paper) 94%, var(--accent-2) 6%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.65),
+        0 0 0 1px rgba(26,22,18,0.05),
+        0 3px 6px rgba(26,22,18,0.06),
+        0 18px 34px rgba(26,22,18,0.14);
+    }
+    .bird-card:hover .img-wrap img {
+      transform: translateY(-3px) scale(1.04);
+      filter: drop-shadow(0 10px 16px rgba(26,22,18,0.18));
+    }
+    .bird-card:hover h3 { color: var(--accent); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bird-card, .bird-card .img-wrap img, .bird-card h3 { transition-duration: 1ms !important; }
+    .bird-card:hover, .bird-card:hover .img-wrap img { transform: none !important; }
+  }
   .bird-card .actions, .bird-card .spectro-wrap { cursor: auto; }
   .bird-card .actions button, .bird-card .actions a { cursor: pointer; }
   .bird-card .stat {
     position: absolute; top: 14px; left: 16px;
-    font: 9px/1.5 ui-monospace, Menlo, monospace;
+    font: 10.5px/1.5 ui-monospace, Menlo, monospace;
     color: var(--ink-soft); letter-spacing: 0.04em;
   }
   /* "lifer" badge - shown top-right when a species' first-ever detection
@@ -2659,10 +2776,10 @@ body.postcard-open { overflow: hidden; }
      off so it never blocks the card's click-to-open. */
   .lifer-badge {
     position: absolute; top: 12px; right: 12px; z-index: 2;
-    font: 700 8px/1 ui-monospace, Menlo, monospace;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    font: 700 9.5px/1 ui-monospace, Menlo, monospace;
+    letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--paper); background: var(--accent);
-    padding: 4px 7px; border-radius: 999px;
+    padding: 4px 8px; border-radius: 999px;
     box-shadow: 0 2px 6px rgba(26,22,18,0.18);
     pointer-events: none;
   }
@@ -2675,35 +2792,137 @@ body.postcard-open { overflow: hidden; }
   .bird-card .img-wrap {
     flex: 1 1 auto; min-height: 0;
     display: flex; align-items: center; justify-content: center;
-    margin: 38px 0 10px;
+    margin: 34px 0 12px;
     padding: 4px;
   }
   .bird-card .img-wrap img {
-    max-width: 100%; max-height: 160px; display: block;
+    max-width: 100%; max-height: 190px; display: block;
     filter: drop-shadow(0 2px 6px rgba(26,22,18,0.10));
+    transition:
+      transform 260ms cubic-bezier(.2,.7,.3,1),
+      filter 260ms ease;
   }
   .bird-card h3 {
     margin: 0;
     font: 700 14.5px/1.15 ui-serif, "Iowan Old Style", Georgia, serif;
     color: var(--ink); letter-spacing: 0.01em;
+    transition: color 220ms ease;
   }
   .bird-card .sci {
-    font: italic 11px/1.2 ui-serif, Georgia, serif;
-    color: var(--ink-2); margin: 2px 0 0;
+    font: italic 12.5px/1.25 ui-serif, Georgia, serif;
+    color: var(--ink-2); margin: 3px 0 0;
   }
-  .bird-card .actions {
-    display: flex; gap: 6px; align-items: stretch;
-    margin-top: 12px; padding-top: 10px;
-    box-shadow: inset 0 1px 0 rgba(26,22,18,0.07);
+  /* Bird identity row: name/sci on the left, quick-play button on the right.
+     Puts the button next to the name it plays, so its purpose is obvious and
+     it never floats over the illustration. */
+  .bird-card .card-title {
+    display: flex; align-items: flex-end; gap: 12px;
+    margin-top: 2px;
+  }
+  .bird-card .card-title-text { flex: 1 1 auto; min-width: 0; }
+  .bird-card .card-title-text h3 { margin: 0; }
+  /* Align to flex-end so the button anchors to the bottom of the name block
+     no matter how many lines h3 wraps to — every card's play button sits on
+     the same baseline as the sci row. */
+  .bird-card .card-title .card-play { flex: 0 0 auto; align-self: flex-end; }
+
+  .bird-card .card-play {
+    width: 34px; height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: var(--ink);
+    background: var(--paper-2);
+    box-shadow:
+      inset 0 0 0 1px var(--card-rule, rgba(26,22,18,0.08)),
+      0 2px 6px rgba(26,22,18,0.08);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition:
+      transform 200ms cubic-bezier(.2,.7,.3,1),
+      background 200ms ease,
+      color 200ms ease,
+      box-shadow 200ms ease;
+  }
+  .bird-card .card-play svg { width: 12px; height: 12px; transform: translateX(1px); }
+  /* The state label is announced by screen readers via a plain <span> but
+     hidden visually; the icon alone carries the meaning on the card. The
+     :not(.eq-icon) exclusion keeps the animated equalizer visible while
+     still hiding the "stop" text next to it. */
+  .bird-card .card-play > span:not(.eq-icon) {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .bird-card .card-play:active { transform: scale(.92); }
+  .bird-card .card-play:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+  .bird-card .card-play[data-state="playing"] {
+    color: var(--paper);
+    background: var(--ink);
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.20),
+      0 4px 12px rgba(26,22,18,0.24);
+  }
+  .bird-card .card-play[data-state="playing"] svg { transform: none; }
+  .bird-card .card-play[data-state="loading"] { opacity: .7; cursor: progress; }
+  .bird-card .card-play[data-state="loading"] svg { transform: none; }
+  .bird-card .card-play[data-state="missing"] { opacity: .5; cursor: not-allowed; }
+  @media (hover: hover) and (pointer: fine) {
+    .bird-card .card-play:hover {
+      color: var(--paper);
+      background: var(--ink);
+      transform: scale(1.06);
+    }
+    .bird-card .card-play[data-state="loading"]:hover,
+    .bird-card .card-play[data-state="missing"]:hover { transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bird-card .card-play,
+    .bird-card .card-play:hover { transform: none !important; transition-duration: 1ms !important; }
+  }
+
+  /* Playing-state equalizer: three bars scaling on staggered delays. The
+     icon replaces the pause glyph in setAtlasCardButtonState, so the button
+     reads as "this is sounding right now" while a recording plays. */
+  .bird-card .card-play .eq-icon {
+    display: inline-flex; align-items: flex-end; justify-content: center;
+    width: 12px; height: 12px;
+    gap: 1.5px;
+  }
+  .bird-card .card-play .eq-icon i {
+    flex: 1;
+    height: 100%;
+    background: currentColor;
+    border-radius: 1px;
+    transform: scaleY(0.3);
+    transform-origin: bottom center;
+    animation: card-play-eq 780ms ease-in-out infinite;
+  }
+  .bird-card .card-play .eq-icon i:nth-child(1) { animation-delay: -220ms; }
+  .bird-card .card-play .eq-icon i:nth-child(2) { animation-delay: -520ms; }
+  .bird-card .card-play .eq-icon i:nth-child(3) { animation-delay: -80ms; }
+  @keyframes card-play-eq {
+    0%, 100% { transform: scaleY(0.28); }
+    50%      { transform: scaleY(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bird-card .card-play .eq-icon i { animation: none; transform: scaleY(0.65); }
   }
   .bird-card .chip {
     flex: 0 0 auto;
     background: var(--paper-2);
     border: 0; color: var(--ink);
-    padding: 5px 9px;
+    padding: 6px 10px;
     border-radius: 4px;
-    font: 9.5px/1 ui-monospace, Menlo, monospace;
-    text-transform: lowercase; letter-spacing: 0.10em;
+    font: 10.5px/1 ui-monospace, Menlo, monospace;
+    text-transform: lowercase; letter-spacing: 0.08em;
     text-decoration: none;
     cursor: pointer;
     display: inline-flex; align-items: center; gap: 5px;
@@ -2726,8 +2945,8 @@ body.postcard-open { overflow: hidden; }
      pill aesthetic: the active element is a slightly *brighter* paper
      surface (raised) on top of a slightly *recessed* background.
      No accent colour, no glowing ring - just the same depth shadow
-     recipe the rest of the chrome uses. */
-  .bird-card { transition: transform 280ms cubic-bezier(.7,.05,.2,1), box-shadow 280ms ease, background 200ms ease; }
+     recipe the rest of the chrome uses. Transition list lives on the base
+     .bird-card rule above; no override needed here. */
   .bird-card[data-active="true"] {
     background: var(--paper);
     box-shadow:
@@ -3616,8 +3835,8 @@ body.postcard-open { overflow: hidden; }
     .modal-info h2 { font-size: 22px; }
     .modal-img { aspect-ratio: 1 / 1; padding: 10px; }
     .modal-grid { gap: 18px; }
-    .rec-row .when { font-size: 10.5px; }
-    .rec-row .when small { font-size: 8.5px; }
+    .rec-row .when { font-size: 12px; }
+    .rec-row .when small { font-size: 10.5px; }
   }
 
   /* ============ Detail modal (atlas card expansion) ============
@@ -3826,13 +4045,13 @@ body.postcard-open { overflow: hidden; }
     text-transform: uppercase;
   }
   .modal-info .desc {
-    font: 13px/1.55 ui-serif, Georgia, serif;
+    font: 15px/1.55 ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
     color: var(--ink); margin: 0 0 14px;
   }
   .modal-info .desc.placeholder { color: var(--ink-soft); font-style: italic; }
   .modal-meta {
     display: flex; flex-wrap: wrap; gap: 16px;
-    font: 9.5px ui-monospace, Menlo, monospace; color: var(--ink-soft);
+    font: 11px ui-monospace, Menlo, monospace; color: var(--ink-soft);
   }
   .modal-meta .k { letter-spacing: 0.12em; text-transform: uppercase; }
   .modal-meta .v { color: var(--ink); margin-left: 6px; }
@@ -4090,9 +4309,9 @@ body.av-local #dd-items:not(:has(a, button, .live-audio)) { display: none; }
 .chart-pick button .tip {
   position: absolute; top: calc(100% + 6px); left: 50%;
   transform: translateX(-50%); white-space: nowrap;
-  font: 9px ui-monospace, Menlo, monospace; letter-spacing: 0.14em;
+  font: 10.5px ui-monospace, Menlo, monospace; letter-spacing: 0.1em;
   text-transform: lowercase; color: var(--ink-soft);
-  background: var(--paper); padding: 3px 8px; border-radius: 4px;
+  background: var(--paper); padding: 4px 9px; border-radius: 4px;
   box-shadow: var(--raised);
   opacity: 0; pointer-events: none; transition: opacity 160ms ease;
 }
@@ -4113,8 +4332,8 @@ body.av-local #dd-items:not(:has(a, button, .live-audio)) { display: none; }
   stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .rh-svg .ln-avg { fill: none; stroke: var(--ink-soft); stroke-width: 1.1;
   stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
-.rh-ytick, .rh-xtick { position: absolute; font: 400 7.5px "SF Mono", Menlo, monospace;
-  color: var(--ink-soft); letter-spacing: 0.04em; }
+.rh-ytick, .rh-xtick { position: absolute; font: 400 10px "SF Mono", Menlo, monospace;
+  color: var(--ink-soft); letter-spacing: 0.03em; }
 .rh-ytick { left: 0; transform: translateY(50%); }
 .rh-xtick { bottom: 0; transform: translateX(-50%); white-space: nowrap; }
 .rh-plot > .stats-data-empty { height: 100%; }
@@ -4175,7 +4394,7 @@ body.av-local #dd-items:not(:has(a, button, .live-audio)) { display: none; }
 .heatmap-table { border-collapse: collapse; white-space: nowrap; width: 100%; table-layout: fixed; }
 .heatmap-corner { width: 30%; min-width: 150px; }
 .heatmap-table th {
-  font: 400 9.5px ui-monospace, "SF Mono", Menlo, monospace; font-weight: normal;
+  font: 400 10.5px ui-monospace, "SF Mono", Menlo, monospace; font-weight: normal;
   color: var(--ink-soft); text-align: center;
   letter-spacing: 0; padding: 0 1px 8px; overflow: visible;
 }
@@ -4224,7 +4443,7 @@ body.av-local #dd-items:not(:has(a, button, .live-audio)) { display: none; }
     color: transparent;
     font-size: 0;
   }
-  .heatmap-table th.heatmap-hour-major { font-size: 8px; }
+  .heatmap-table th.heatmap-hour-major { font-size: 10px; }
   /* At phone width, long ledgers work as heatmaps rather than tiny numeric
      tables. Row totals remain visible; shorter hour ranges keep cell counts. */
   .heatmap-table.heatmap-compressed td:not(.heatmap-name):not(.heatmap-total) {
